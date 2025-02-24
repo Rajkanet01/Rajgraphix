@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rajgraphix Portfolio</title>
+  <!-- Import Thunder One Slice font from Google Fonts -->
+  <style>
+    @import url('https://fontforfree.com/download/thunder-one-slice.css');
+
+.logo {
+    font-family: 'Thunder One Slice', sans-serif;
+}
+
+      /* Responsive Navigation */
+  @media (max-width: 768px) {
+    nav ul {
+      flex-direction: column;
+      display: none;
+    }
+    .menu-toggle {
+      display: block;
+      background: none;
+      border: none;
+      color: var(--text-color);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .nav-active {
+      display: flex;
+    }
+  }
+
+  /* Responsive Sections */
+  .hero-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .hero-content h2 {
+    font-size: 2rem;
+  }
+  .hero-image img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+  }
+  @media (min-width: 768px) {
+    .hero-container {
+      flex-direction: row;
+      text-align: left;
+    }
+    .hero-content {
+      flex: 1;
+    }
+    .hero-image {
+      flex: 1;
+    }
+  }
+    /* Only dark mode styling */
+    :root {
+      --primary-color: #189bd8; /* Updated blue color */
+      --heading-color: #ffffff;
+      --text-color: #e0e0e0;
+      --background-color: #121212;
+      --container-background: #1e1e1e;
+    }
+    
+    /* Global Styles */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    /* Header Styles */
+    header {
+      background-color: var(--container-background);
+      padding: 1rem 0;
+    }
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-size: 1.5rem;
+      color: var(--heading-color);
+      font-family: 'Thunder One Slice', cursive;
+    }
+    /* Span to color the "GRAPHIX" part */
+    .logo .logo-highlight {
+      color: var(--primary-color);
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--text-color);
+    }
+    
+    /* Hero Section Styles */
+    #hero {
+      padding: 2rem 0;
+    }
+    .hero-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .hero-content {
+      text-align: center;
+      max-width: 600px;
+    }
+    .hero-content h2 {
+      font-size: 2.5rem;
+      color: var(--heading-color);
+    }
+    .hero-content p {
+      font-size: 1.2rem;
+      color: var(--text-color);
+      margin: 1rem 0;
+    }
+    .btn {
+      background-color: var(--primary-color);
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .hero-image img {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+    .hero-image img:hover {
+      transform: scale(1.05);
+    }
+    @media (min-width: 768px) {
+      .hero-container {
+        flex-direction: row;
+        text-align: left;
+      }
+      .hero-content {
+        flex: 1;
+        padding-right: 1rem;
+      }
+      .hero-image {
+        flex: 1;
+        padding-left: 1rem;
+      }
+    }
+    
+    /* Section General Styles */
+    section {
+      padding: 3rem 0;
+      background-color: var(--container-background);
+      margin-bottom: 1rem;
+    }
+    section h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: var(--heading-color);
+      margin-bottom: 1.5rem;
+    }
+    
+    /* Project Carousel Styles */
+    .project-carousel {
+      position: relative;
+      overflow: hidden;
+    }
+    .carousel-inner {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+    .project-slide {
+      min-width: 100%;
+      padding: 1rem 0;
+    }
+    .project-grid {
+      display: grid;
+      gap: 1rem;
+    }
+    @media (min-width: 768px) {
+      .project-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    .project {
+      background-color: var(--background-color);
+      padding: 1rem;
+      border-radius: 5px;
+      text-align: center;
+      position: relative;
+    }
+    .project img {
+      width: 100%;
+      max-width: 350px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 5px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .project img:hover {
+      transform: scale(1.05);
+    }
+    
+    /* Carousel Arrow Styles */
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: var(--primary-color);
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-radius: 3px;
+      z-index: 10;
+    }
+    .carousel-arrow.left {
+      left: 10px;
+    }
+    .carousel-arrow.right {
+      right: 10px;
+    }
+    
+    /* Contact Form Styles */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    input, textarea {
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button[type="submit"] {
+      background-color: var(--primary-color);
+      color: #fff;
+      border: none;
+      padding: 0.75rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    /* Confirmation Message Styles */
+    .sent-message {
+      display: none;
+      text-align: center;
+      font-size: 1.2rem;
+      color: var(--heading-color);
+      animation: popUp 0.5s forwards;
+      margin-top: 1rem;
+    }
+    
+    /* Footer Styles */
+    footer {
+      background-color: var(--container-background);
+      padding: 1rem 0;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    .footer-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .footer-content {
+      text-align: center;
+      width: 100%;
+    }
+    .footer-content p {
+      margin: 0.5rem 0;
+      color: var(--text-color);
+      font-size: 0.9rem;
+    }
+    .footer-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .footer-nav a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-size: 0.9rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .footer-nav a:hover {
+      color: var(--primary-color);
+      transform: scale(1.1);
+    }
+    .footer-social {
+      margin-top: 0.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .footer-social a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-size: 1rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .footer-social a:hover {
+      color: var(--primary-color);
+      transform: scale(1.1);
+    }
+    
+    /* About Section Styles */
+    #about {
+      padding: 3rem 0;
+      background-color: var(--container-background);
+      margin-bottom: 1rem;
+    }
+    #about h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: var(--heading-color);
+      margin-bottom: 1.5rem;
+    }
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      animation: fadeInUp 1s ease-out;
+    }
+    .about-image img {
+      width: 450px;
+      height: 450px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .about-image img:hover {
+      transform: scale(1.05);
+    }
+    .about-text {
+      max-width: 800px;
+      text-align: center;
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+    @media (min-width: 768px) {
+      .about-content {
+        flex-direction: row;
+        text-align: left;
+      }
+      .about-image, .about-text {
+        flex: 1;
+      }
+      .about-text {
+        padding-left: 2rem;
+      }
+    }
+    
+    /* Fade-in and Fade-out Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes fadeOut {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+    .fade-out {
+      animation: fadeOut 1s forwards;
+    }
+    @keyframes popUp {
+      from { transform: scale(0.5); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    
+    /* Modal Popup Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.8);
+      animation: fadeIn 0.5s;
+      padding: 1rem;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+    }
+    .modal.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      max-width: 90%;
+      max-height: 90%;
+      animation: zoomIn 0.5s;
+    }
+    .modal-content {
+      max-width: 100%;
+      max-height: 80vh;
+      width: auto;
+      height: auto;
+      border-radius: 5px;
+    }
+    .modal-details {
+      margin-top: 20px;
+      text-align: center;
+      color: #fff;
+    }
+    @media (min-width: 768px) {
+      .modal-wrapper {
+        flex-direction: row;
+      }
+      .modal-details {
+        margin-top: 0;
+        margin-left: 20px;
+        text-align: left;
+      }
+    }
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    @keyframes zoomIn {
+      from {transform: scale(0.8);}
+      to {transform: scale(1);}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <h1 class="logo">RAJ<span class="logo-highlight">GRAPHIX</span></h1>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="container hero-container">
+      <div class="hero-content">
+        <h2>Welcome to My Portfolio</h2>
+        <p>I am a graphic designer passionate about creating visually stunning designs that tell a story.</p>
+        <a href="#projects" class="btn">View My Work</a>
+      </div>
+      <div class="hero-image">
+        <img src="Untitled-1-01.png" alt="Hero Image" />
+      </div>
+    </div>
+  </section>
+  
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <h2>About Me</h2>
+      <div class="about-content">
+        <div class="about-image">
+          <img src="SAVE_20230408_082510.jpg" alt="Profile Picture" />
+        </div>
+        <div class="about-text">
+          <p>I’m Raj Kanet, a passionate graphic designer and UI/UX designer, dedicated to creating visually stunning and user-friendly designs. I specialize in branding, social media content, and interface design, ensuring that every project I work on stands out with creativity and impact.</p>
+          <p>I also manage RajGraphix on Instagram, where I showcase my latest design projects, creative experiments, and design tips. In addition, I run my YouTube channel, Raj Kanet, where I share entertaining vlogs and comedy content.</p>
+          <p>With a strong eye for aesthetics and a commitment to innovation, I constantly explore new design trends and techniques to refine my skills. Let’s connect and create something extraordinary!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Projects Section with Carousel -->
+  <section id="projects">
+    <div class="container">
+      <h2>Projects</h2>
+      <div class="project-carousel">
+        <div class="carousel-inner">
+          <!-- Slide 1: Original 6 Projects -->
+          <div class="project-slide">
+            <div class="project-grid">
+              <div class="project">
+                <img src="Step into Style with the Nike Air Max 270.jpg" alt="Project 1" />
+                <h3>Nike Air Max 270</h3>
+                <p>A stylish and modern sneaker ad highlighting the sleek design, comfort, and innovation of the Nike Air Max 270 with a glowing teal effect. 👟</p>
+              </div>
+              <div class="project">
+                <img src="Modern Smartwatch Advertisement Design - Stylish & Minimal.jpg" alt="Project 2" />
+                <h3>Smart Watch Design</h3>
+                <p>A futuristic and minimal smartwatch promotion with bold typography and a high-tech aesthetic, perfect for tech-savvy buyers. ⌚</p>
+              </div>
+              <div class="project">
+                <img src="burger.jpg" alt="Project 3" />
+                <h3>Burger Design</h3>
+                <p>A mouth-watering food ad showcasing a juicy double cheese burger with fresh ingredients, tempting food lovers to order now. 🍔</p>
+              </div>
+              <div class="project">
+                <img src="Digital marketing poster.jpg" alt="Project 4" />
+                <h3>Digital Marketing Design</h3>
+                <p>A bold and futuristic ad showcasing a rocket launch, symbolizing brand growth and success with a sleek modern design. 🚀</p>
+              </div>
+              <div class="project">
+                <img src="Pizza design.jpg" alt="Project 5" />
+                <h3>Pizza Design</h3>
+                <p>A tempting pizza promotion offering free home delivery, featuring a delicious pizza and bold typography for a tasty appeal. 🍕</p>
+              </div>
+              <div class="project">
+                <img src="POSTER DESIGN - FORD MUSTANG GT500.jpg" alt="Project 6" />
+                <h3>Ford Mustang GT500</h3>
+                <p>A high-performance Ford Mustang GT500 ad, highlighting its 5.2L V8 engine and sleek blue design for speed lovers. 🏎️</p>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 2: New 6 Projects -->
+          <div class="project-slide">
+            <div class="project-grid">
+              <div class="project">
+                <img src="Furniture Landing Page - Webdesign.jpg" alt="Project 7" />
+                <h3>Web Ui/Ux Design</h3>
+                <p>A sleek and modern furniture website UI with a warm aesthetic, perfect for stylish home lovers. 💻</p>
+              </div>
+              <div class="project">
+                <img src="Food App.png" alt="Project 8" />
+                <h3>Apk Ui/Ux Design</h3>
+                <p>A user-friendly food ordering UI with rich visuals and smooth navigation for a seamless food experience. 📱</p>
+              </div>
+              <div class="project">
+                <img src="Wireless Headphone Social Media Post Design.jpg" alt="Project 9" />
+                <h3>Headphone Design</h3>
+                <p>A premium noise-canceling wireless headphone ad, highlighting sleek design and immersive sound quality. 🎧</p>
+              </div>
+              <div class="project">
+                <img src="institude 1@2x-8.png" alt="Project 10" />
+                <h3>Creative Design</h3>
+                <p>A creative and engaging ad showcasing career-oriented courses like Graphic Design with a sharp and modern design. 🎯</p>
+              </div>
+              <div class="project">
+                <img src="social media.jpg" alt="Project 11" />
+                <h3>Social Media Post</h3>
+                <p>A powerful and results-driven social media marketing service designed to boost engagement, impressions, and brand visibility. 📊</p>
+              </div>
+              <div class="project">
+                <img src="food ui.png" alt="Project 12" />
+                <h3>Food Apk Ui/Ux Design</h3>
+                <p>A sleek and modern food app UI/UX design featuring smooth navigation, tempting visuals, and an effortless ordering experience. 🎂</p>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 3: Additional 6 Projects -->
+          <div class="project-slide">
+            <div class="project-grid">
+              <div class="project">
+                <img src="Club dj party flyer social media post design.jpg" alt="Project 13" />
+                <h3>Party flyer</h3>
+                <p>A vibrant night party flyer with neon blue text and a masked DJ in the center. 📀</p>
+              </div>
+              <div class="project">
+                <img src="Premium PSD _ Coffee shop drink menu promotion social media instagram post banner template.jpg "alt=Project 14" />
+                <h3>Coffey Design </h3>
+                <p>A stylish coffee advertisement featuring a takeaway cup with coffee splashing out. ☕</p>
+              </div>
+              <div class="project">
+                <img src="Delicious pizza social media promotional banner or post design template.jpg" alt="Project 15" />
+                <h3>Pizza Poster</h3>
+                <p>A mouthwatering pizza ad with a perfectly sliced pizza on a red background. 🍕</p>
+              </div>
+              <div class="project">
+                <img src="Digital marketing poster 2.jpg" alt="Project 16" />
+                <h3>Digital Marketing Poster</h3>
+                <p>A creative digital ad featuring a meditating chimp in a hoodie, symbolizing the digital evolution. Bold text invites users to join the digital jungle! 🚀</p>
+              </div>
+              <div class="project">
+                <img src="Modern Social Media Post Design - Tapos Kumar.jpg" alt="Project 17" />
+                <h3>Creative Design </h3>
+                <p>A comprehensive brand identity design that encapsulates modern aesthetics. 🏷️</p>
+              </div>
+              <div class="project">
+                <img src="download.jpg" alt="Project 18" />
+                <h3>Marketing Design</h3>
+                <p>A sleek minimalist design focusing on simplicity and elegance. ⚪</p>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 4: Additional 6 Projects -->
+          <div class="project-slide">
+            <div class="project-grid">
+              <div class="project">
+                <img src="Project 19.jpg" alt="Project 19" />
+                <h3>Futuristic Interface</h3>
+                <p>A forward-thinking interface design that blends technology with art. 🤖</p>
+              </div>
+              <div class="project">
+                <img src="Nature meets beauty products.jpg" alt="Project 20" />
+                <h3>Nature Inspired</h3>
+                <p>A design concept inspired by natural elements and organic patterns. 🍃</p>
+              </div>
+              <div class="project">
+                <img src="PSD Furniture Flyer Template.jpg" alt="Project 21" />
+                <h3>Corporate Brochure</h3>
+                <p>A professional brochure design that communicates trust and expertise. 📄</p>
+              </div>
+              <div class="project">
+                <img src="Car Social Media Post Design _ Creative Car Banner.jpeg" alt="Project 22" />
+                <h3>Car Design Poster</h3>
+                <p>An energetic motion graphics design that brings visuals to life. 🎞️</p>
+              </div>
+              <div class="project">
+                <img src="8833396.jpg" alt="Project 23" />
+                <h3>Typography Art</h3>
+                <p>A creative exploration of typography as a form of art. ✒️</p>
+              </div>
+              <div class="project">
+                <img src="Premium Tea Pouch Packaging .jpg" alt="Project 24" />
+                <h3>Creative Packaging</h3>
+                <p>An innovative packaging design that combines aesthetics with functionality. 📦</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modified Left Arrow Animation -->
+        <button class="carousel-arrow left">&#10094;</button>
+        <button class="carousel-arrow right">&#10095;</button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <form
+  action="https://formspree.io/f/mzzdqqrg"
+  method="POST"
+>
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit" onclick="sendmail()">Send Message</button>
+      </form>
+      <div id="confirmationMessage" class="sent-message">Thank You!</div>
+    </div>
+  </section>
+  
+  <!-- Footer Section -->
+  <footer>
+    <div class="container footer-container">
+      <div class="footer-content">
+        <p>&copy; 2025 Raj Kanet. All Rights Reserved.</p>
+        <nav class="footer-nav">
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="footer-social">
+          <a href="https://youtube.com/@rajkanet?si=SKFZdfhrbjet8Q_n" aria-label="YouTube">YouTube</a>
+          <a href="https://pin.it/70rZ9Sesx" aria-label="Pinterest">Pinterest</a>
+          <a href="https://www.instagram.com/rajgraphix01?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram">Instagram</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Modal Popup for Project Images and Details -->
+  <div id="imageModal" class="modal">
+    <span class="close">&times;</span>
+    <div class="modal-wrapper">
+      <img class="modal-content" id="modalImage" alt="Popup Image" src="">
+      <div class="modal-details">
+        <h3 id="modalTitle"></h3>
+        <p id="modalDescription"></p>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+
+
+    // JavaScript for Modal Popup on Project Image Click with Details
+    const projectImages = document.querySelectorAll('.project img');
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    const closeModal = document.querySelector('.close');
+    
+    projectImages.forEach(img => {
+      img.addEventListener('click', function() {
+        modalImg.src = this.src;
+        const project = this.closest('.project');
+        modalTitle.textContent = project.querySelector('h3').textContent;
+        modalDescription.textContent = project.querySelector('p').textContent;
+        modal.classList.add("active");
+      });
+    });
+    
+    closeModal.addEventListener('click', () => {
+      modal.classList.remove("active");
+    });
+    
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove("active");
+      }
+    });
+    
+    // JavaScript for Contact Form Animation on Submit
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      contactForm.classList.add('fade-out');
+      setTimeout(() => {
+        contactForm.style.display = 'none';
+        const confMsg = document.getElementById('confirmationMessage');
+        confMsg.style.display = 'block';
+      }, 1000);
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+    const carouselInner = document.querySelector(".carousel-inner");
+    const slides = document.querySelectorAll(".project-slide");
+    const totalSlides = slides.length;
+    let currentIndex = 0;
+
+    document.querySelector(".carousel-arrow.right").addEventListener("click", function () {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateCarousel();
+    });
+
+    document.querySelector(".carousel-arrow.left").addEventListener("click", function () {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        updateCarousel();
+    });
+
+    function updateCarousel() {
+        const offset = -currentIndex * 100;
+        carouselInner.style.transform = `translateX(${offset}%)`;
+    }
+});
+
+  </script>
+  <script>
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+      document.querySelector('nav ul').classList.toggle('nav-active');
+    });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const carouselInner = document.querySelector(".carousel-inner");
+        const slides = document.querySelectorAll(".project-slide");
+        const totalSlides = slides.length;
+        let currentIndex = 0;
+    
+        function updateCarousel() {
+            const offset = -currentIndex * 100;
+            carouselInner.style.transform = `translateX(${offset}%)`;
+        }
+    
+        document.querySelector(".carousel-arrow.right").addEventListener("click", function () {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateCarousel();
+        });
+    
+        document.querySelector(".carousel-arrow.left").addEventListener("click", function () {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        });
+    });
+    </script>
+    
+</body>
+</html>
